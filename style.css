@@ -105,43 +105,77 @@ ul {
     color: var(--accent-color);
 }
 
-/* --- Hero Section --- */
+
+
+/* --- Hero Section (Actualizado para Carrusel) --- */
 .hero {
-    /* Truco: Usamos un degradado naranja en lugar de foto por ahora */
-    background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(211, 84, 0, 0.8)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'); /* Foto genérica de BBQ de fondo */
-    background-size: cover;
-    background-position: center;
-    height: 60vh;
+    position: relative;
+    height: 60vh; /* Altura del banner */
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     color: var(--text-light);
+    overflow: hidden; /* Asegura que nada se salga del contenedor */
+}
+
+/* El contenedor de las diapositivas */
+.hero-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Nivel de fondo */
+}
+
+/* Cada diapositiva individual */
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* Inicialmente invisibles */
+    opacity: 0;
+    /* Transición suave de 1 segundo */
+    transition: opacity 1s ease-in-out;
+    /* Agregamos el filtro oscuro sobre cada imagen para que el texto se lea bien */
+}
+/* Un truco para añadir la capa oscura sobre la imagen de fondo usando pseudo-elementos */
+.hero-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(211, 84, 0, 0.7));
+}
+
+
+/* La clase que hace visible la diapositiva actual */
+.hero-slide.active {
+    opacity: 1;
+}
+
+/* El contenido de texto debe estar POR ENCIMA del carrusel */
+.hero-content {
+    position: relative;
+    z-index: 2; /* Nivel superior */
+    padding: 20px;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-size: 3rem; /* Ajusté un poco el tamaño para el texto más largo */
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
+/* ... el resto del CSS (.hero-content p, .btn-primary) sigue igual abajo ... */
 
-.hero-content p {
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-}
 
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 12px 30px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: var(--accent-color);
-}
 
 /* --- Nota de IVA --- */
 .iva-note {
