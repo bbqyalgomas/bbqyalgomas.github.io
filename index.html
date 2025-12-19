@@ -24,8 +24,17 @@
     </nav>
 
     <header class="hero">
+        <div class="hero-carousel">
+            <div class="hero-slide active" style="background-image: url('hero1.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('hero2.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('hero3.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('hero4.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('hero5.jpg');"></div>
+            <div class="hero-slide" style="background-image: url('hero6.jpg');"></div>
+        </div>
+
         <div class="hero-content">
-            <h1>Sabor incomparable...</h1>
+            <h1>Alitas realmente sabrosas... Sabor incomparable...</h1>
             <p>Fast Food | Alitas | Costillas | Hamburguesas</p>
             <a href="#menu-start" class="btn-primary">Ver el Menú</a>
         </div>
@@ -320,6 +329,27 @@
             <p>&copy; 2023 Barbecue y Algo Más. Todos los derechos reservados.</p>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let currentSlide = 0;
+            const slideInterval = 5000; // Cambia cada 5000ms (5 segundos)
 
+            function nextSlide() {
+                // 1. Quitar la clase 'active' de la imagen actual
+                slides[currentSlide].classList.remove('active');
+                
+                // 2. Calcular el índice de la siguiente imagen
+                // (Si llega al final, vuelve a 0)
+                currentSlide = (currentSlide + 1) % slides.length;
+                
+                // 3. Agregar la clase 'active' a la nueva imagen
+                slides[currentSlide].classList.add('active');
+            }
+
+            // Iniciar el temporizador
+            setInterval(nextSlide, slideInterval);
+        });
+    </script>
 </body>
 </html>
