@@ -161,6 +161,29 @@ ul {
     opacity: 1;
 }
 
+/* --- CSS NUEVO PARA EL VIDEO --- */
+/* Aseguramos que el contenedor del video se comporte bien */
+.hero-slide.video-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000; /* Fondo negro por si el video tarda en cargar */
+}
+
+/* Estilos para el iframe de Facebook para que llene el espacio */
+.hero-slide.video-slide iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    /* Esto intenta centrar el video y que cubra lo más posible */
+    transform: translate(-50%, -50%);
+    /* Nota: Como los Reels son verticales y la pantalla horizontal, 
+       Facebook pondrá barras negras o cortará un poco arriba/abajo. Es normal. */
+    pointer-events: none; /* Evita que la gente haga clic en el video (pausa, play, etc) para que no interfiera con el texto */
+}
+/* -------------------------------- */
 /* El contenido de texto debe estar POR ENCIMA del carrusel */
 .hero-content {
     position: relative;
