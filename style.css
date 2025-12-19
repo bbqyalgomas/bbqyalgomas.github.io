@@ -1,0 +1,354 @@
+/* --- Reseteo y Variables Globales --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #d35400; /* Naranja quemado BBQ */
+    --secondary-color: #2c3e50; /* Azul oscuro/Gris */
+    --accent-color: #e67e22; /* Naranja más brillante */
+    --light-bg: #f9f9f9;
+    --dark-bg: #1a1a1a;
+    --text-dark: #333;
+    --text-light: #fff;
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--light-bg);
+}
+
+/* --- Utilidades --- */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.alternate-bg {
+    background-color: #fff;
+    padding: 60px 0;
+}
+
+.badge-new {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* --- Navbar --- */
+.navbar {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    transition: color 0.3s;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Hero Section --- */
+.hero {
+    /* Truco: Usamos un degradado naranja en lugar de foto por ahora */
+    background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(211, 84, 0, 0.8)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80'); /* Foto genérica de BBQ de fondo */
+    background-size: cover;
+    background-position: center;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+}
+
+/* --- Nota de IVA --- */
+.iva-note {
+    background-color: #fff3cd;
+    color: #856404;
+    text-align: center;
+    padding: 15px;
+    border-bottom: 2px solid #ffeeba;
+}
+
+/* --- Layout del Menú --- */
+.menu-container {
+    padding: 40px 0;
+}
+
+.menu-section {
+    margin-bottom: 60px;
+    padding: 40px 20px;
+    border-radius: 15px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.salsa-info, .sabores {
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 25px;
+    color: #666;
+}
+
+.menu-category-header h3 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+/* --- Tarjetas de Ítems del Menú --- */
+.menu-item {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-top: 3px solid var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.menu-item h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.menu-item p {
+    color: #666;
+    font-size: 0.95rem;
+    flex-grow: 1; /* Hace que el precio se empuje al fondo */
+}
+
+.menu-item .price {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-top: 15px;
+    text-align: right;
+}
+
+.menu-item.featured {
+    border-top: 3px solid var(--primary-color);
+    background-color: #fff8f0; /* Fondo ligeramente diferente para destacados */
+}
+
+/* --- Estilos específicos para Papas y Bebidas --- */
+.two-columns {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.submenu-title {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.simple-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dotted #ccc;
+}
+
+.simple-list li span {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.drinks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.drink-category h3 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.drink-category ul li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.drink-category ul li span {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--dark-bg);
+    color: #bbb;
+    padding: 60px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column h3 {
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.footer-column p {
+    margin-bottom: 12px;
+}
+
+.footer-column a {
+    color: var(--accent-color);
+}
+
+.footer-column i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.social-icons a {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--primary-color);
+}
+
+.delivery-note, .pet-friendly {
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-top: 15px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design (Para Celulares) --- */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+    }
+    .nav-links {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .two-columns {
+        grid-template-columns: 1fr; /* Forza una sola columna en móviles para papas */
+    }
+}
