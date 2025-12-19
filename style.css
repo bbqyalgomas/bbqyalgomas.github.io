@@ -49,7 +49,7 @@ a.logo {
 /* 2. Estilos de la IMAGEN (Normal) */
 .logo img {
     /* Tamaño base pequeño */
-    height: 40px !important; 
+    height: 90px !important; 
     
     width: auto !important; 
     object-fit: contain !important; 
@@ -84,7 +84,7 @@ a.logo:hover img {
 /* 5. Versión Celular */
 @media (max-width: 768px) {
     .logo img {
-        height: 30px !important; 
+        height: 70px !important; 
         max-width: 180px !important;
     }
     .navbar {
