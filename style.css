@@ -23,6 +23,89 @@ body {
     background-color: var(--light-bg);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- ESTILOS COMPLETOS DEL LOGO CON ZOOM --- */
+
+/* 1. Resetear estilos del link contenedor */
+a.logo {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 !important;
+    text-decoration: none !important;
+    height: 100% !important; 
+}
+
+/* 2. Estilos de la IMAGEN (Normal) */
+.logo img {
+    /* Tamaño base pequeño */
+    height: 90px !important; 
+    
+    width: auto !important; 
+    object-fit: contain !important; 
+    margin: 0 !important;
+    display: block !important;
+
+    /* AGREGADO: Esto permite que la animación sea suave */
+    transition: transform 0.3s ease !important;
+}
+
+/* 3. AGREGADO: Efecto ZOOM al pasar el mouse */
+a.logo:hover img {
+    /* Esto hace que crezca un 20% más grande */
+    transform: scale(1.2) !important; 
+}
+
+/* 4. Barra de navegación */
+.navbar {
+    padding: 5px 0 !important; 
+    min-height: 55px !important; 
+    display: flex !important;
+    align-items: center !important;
+}
+
+.nav-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    height: 100% !important;
+}
+
+/* 5. Versión Celular */
+@media (max-width: 768px) {
+    .logo img {
+        height: 70px !important; 
+        max-width: 180px !important;
+    }
+    .navbar {
+        min-height: 50px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --- Utilidades --- */
 .container {
     width: 90%;
@@ -107,29 +190,41 @@ ul {
 
 
 
-/* --- Hero Section (Actualizado para Carrusel) --- */
+
+
+
+
+
+
+
+
+
+
+
+/* --- Hero Section Moderno --- */
 .hero {
     position: relative;
-    height: 60vh; /* Altura del banner */
+    height: 100vh; /* Ocupa toda la altura de la pantalla */
+    width: 100%;
+    overflow: hidden; /* Evita que las imágenes se salgan */
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     color: var(--text-light);
-    overflow: hidden; /* Asegura que nada se salga del contenedor */
+    margin-top: 0; /* Quitamos margin top para que toque el navbar si es transparente */
 }
 
-/* El contenedor de las diapositivas */
+/* El contenedor de las imágenes */
 .hero-carousel {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Nivel de fondo */
+    z-index: 1;
 }
 
-/* Cada diapositiva individual */
+/* Cada diapositiva */
 .hero-slide {
     position: absolute;
     top: 0;
@@ -138,64 +233,223 @@ ul {
     height: 100%;
     background-size: cover;
     background-position: center;
-    /* Inicialmente invisibles */
     opacity: 0;
-    /* Transición suave de 1 segundo */
-    transition: opacity 1s ease-in-out;
-    /* Agregamos el filtro oscuro sobre cada imagen para que el texto se lea bien */
+    transition: opacity 1.5s ease-in-out, transform 6s ease; /* Transición suave + Zoom */
+    transform: scale(1); /* Empezamos en tamaño normal */
 }
-/* Un truco para añadir la capa oscura sobre la imagen de fondo usando pseudo-elementos */
-.hero-slide::after {
-    content: '';
+
+/* Estado activo: visible y con zoom lento (Efecto Ken Burns) */
+.hero-slide.active {
+    opacity: 1;
+    transform: scale(1.1); /* Hace un zoom suave hacia adentro */
+}
+
+/* Capa oscura para leer el texto sobre las fotos */
+.overlay-gradient {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(rgba(44, 62, 80, 0.7), rgba(211, 84, 0, 0.7));
+    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+    z-index: 2;
 }
 
-
-/* La clase que hace visible la diapositiva actual */
-.hero-slide.active {
-    opacity: 1;
-}
-
-/* --- CSS NUEVO PARA EL VIDEO --- */
-/* Aseguramos que el contenedor del video se comporte bien */
-.hero-slide.video-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #000; /* Fondo negro por si el video tarda en cargar */
-}
-
-/* Estilos para el iframe de Facebook para que llene el espacio */
-.hero-slide.video-slide iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    /* Esto intenta centrar el video y que cubra lo más posible */
-    transform: translate(-50%, -50%);
-    /* Nota: Como los Reels son verticales y la pantalla horizontal, 
-       Facebook pondrá barras negras o cortará un poco arriba/abajo. Es normal. */
-    pointer-events: none; /* Evita que la gente haga clic en el video (pausa, play, etc) para que no interfiera con el texto */
-}
-/* -------------------------------- */
-/* El contenido de texto debe estar POR ENCIMA del carrusel */
+/* --- Contenido del Texto --- */
 .hero-content {
     position: relative;
-    z-index: 2; /* Nivel superior */
+    z-index: 3; /* Encima de las fotos */
+    text-align: center;
+    max-width: 800px;
     padding: 20px;
+    animation: fadeInUp 1s ease-out; /* Animación de entrada del texto */
+}
+
+.badge-hero {
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    display: inline-block;
 }
 
 .hero-content h1 {
-    font-size: 3rem; /* Ajusté un poco el tamaño para el texto más largo */
-    margin-bottom: 15px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
+
+.hero-content h1 .highlight {
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 300;
+}
+
+/* --- Botones del Hero --- */
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(211, 84, 0, 0.4);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(211, 84, 0, 0.6);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: white;
+    color: var(--secondary-color);
+}
+
+/* --- Controles del Carrusel (Flechas Minimalistas) --- */
+.carousel-controls {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.carousel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    display: flex; /* Para centrar el icono */
+    align-items: center;
+    justify-content: center;
+    /* Quitamos position absolute para que estén debajo del texto */
+    position: static; 
+    transform: none;
+}
+
+.carousel-btn:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Animación de entrada */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Responsive para Móviles --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto 30px auto;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+
+/* --- Estilos para las Flechas del Carrusel --- */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* Centrar verticalmente */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 10px;
+    z-index: 10; /* Asegura que estén encima de las fotos */
+    border-radius: 50%; /* Redondos */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+    background-color: var(--primary-color); /* Se ponen naranja al pasar el mouse */
+}
+
+.prev-btn {
+    left: 10px; /* Flecha izquierda */
+}
+
+.next-btn {
+    right: 10px; /* Flecha derecha */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ... el resto del CSS (.hero-content p, .btn-primary) sigue igual abajo ... */
 
 
@@ -381,6 +635,40 @@ footer {
     margin-top: 15px;
 }
 
+/* Estilo destacado para la zona Pet Friendly */
+.pet-friendly {
+    /* 1. Crear una "caja" para que resalte del fondo */
+    background-color: rgba(255, 255, 255, 0.05); /* Un fondo muy sutil */
+    border: 2px dashed #ff9f43; /* Borde punteado color naranja/dorado */
+    border-radius: 12px; /* Bordes redondeados */
+    
+    /* 2. Espaciado interno y externo */
+    padding: 15px 20px;
+    margin-top: 25px;      /* Separarlo de los íconos sociales */
+    margin-bottom: 15px;   /* Separarlo del texto de quejas */
+    
+    /* 3. Alinear el ícono y el texto */
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centrar todo */
+    gap: 15px; /* Espacio entre la patita y el texto */
+    
+    /* 4. Texto */
+    color: #fff; /* Aseguramos que el texto sea blanco (o ajusta a tu color) */
+    font-weight: bold;
+    text-align: left; /* El texto alineado a la izquierda del bloque */
+    line-height: 1.2;
+}
+
+/* Estilo específico para el ÍCONO (La patita) */
+.pet-friendly i {
+    font-size: 2.2rem; /* ¡Mucho más grande! (aprox 35px) */
+    color: #ff9f43;    /* Mismo color naranja que el borde */
+    
+    /* Un pequeño giro para que se vea simpático */
+    transform: rotate(-10deg); 
+}
+
 .copyright {
     text-align: center;
     padding-top: 20px;
@@ -408,4 +696,16 @@ footer {
     .two-columns {
         grid-template-columns: 1fr; /* Forza una sola columna en móviles para papas */
     }
+}
+
+
+.map-link {
+    color: inherit; /* Mantiene el color del texto original */
+    text-decoration: none; /* Quita el subrayado azul feo */
+    transition: color 0.3s;
+}
+
+.map-link:hover {
+    color: #ffcc00; /* Cambia de color cuando pasas el mouse (opcional) */
+    text-decoration: underline; /* Opcional: subraya al pasar el mouse */
 }
