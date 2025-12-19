@@ -2,18 +2,324 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi Web Personal</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f0f0f0; }
-        h1 { color: #0000; }
-        .caja { background: white; padding: 20px; border-radius: 10px; max-width: 600px; margin: 0 auto; }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbecue y Algo Más | Menú Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="caja">
-        <h1>¡Hola! Soy [Tu Nombre]</h1>
-        <p>Bienvenido a mi sitio web alojado en GitHub Pages.</p>
-        <p>Esto fue fácil de crear.</p>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">BBQ y Algo Más 🍗</a>
+            <ul class="nav-links">
+                <li><a href="#alitas">Alitas</a></li>
+                <li><a href="#costillas">Costillas</a></li>
+                <li><a href="#hamburguesas">Hamburguesas</a></li>
+                <li><a href="#otros">Papas y Más</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Sabor incomparable...</h1>
+            <p>Fast Food | Alitas | Costillas | Hamburguesas</p>
+            <a href="#menu-start" class="btn-primary">Ver el Menú</a>
+        </div>
+    </header>
+
+    <div class="iva-note" id="menu-start">
+        <p><i class="fas fa-info-circle"></i> Nota: Los precios mostrados en el menú <strong>NO incluyen IVA</strong>. Se añadirá un 15% de IVA en su factura final.</p>
     </div>
+
+    <main class="container menu-container">
+
+        <section id="alitas" class="menu-section">
+            <h2 class="section-title">Alitas y Combos 🍗</h2>
+            <p class="section-subtitle">¡Alitas realmente sabrosas! Nuevos sabores: Frutos Rojos y Super Picante.</p>
+            
+            <div class="salsa-info">
+                <p><strong>Salsas disponibles:</strong> BBQ, BBQ Picante, Miel y Mostaza, Ajo, Maracuyá, Frutos Rojos, Super Picante. (Salsa adicional: $0.75)</p>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Combo Personal</h3>
+                    <p>3 alitas + 125 gr de papa + 1 salsa</p>
+                    <span class="price">$3.50</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Combo Doble</h3>
+                    <p>6 alitas + 200 gr de papa + 1 salsa</p>
+                    <span class="price">$4.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Solo Alitas (8)</h3>
+                    <p>8 alitas sin papas + 2 salsas</p>
+                    <span class="price">$5.50</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Combo Familiar 12</h3>
+                    <p>12 alitas + 200 gr de papa + 2 salsas</p>
+                    <span class="price">$8.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Combo Familiar 18</h3>
+                    <p>18 alitas + 200 gr de papa + 2 salsas</p>
+                    <span class="price">$12.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Combo Familiar 24</h3>
+                    <p>24 alitas + 325 gr de papa + 3 salsas</p>
+                    <span class="price">$16.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Combo Mega 30</h3>
+                    <p>30 alitas + 400 gr de papa + 3 salsas</p>
+                    <span class="price">$20.50</span>
+                </div>
+                <div class="menu-item featured">
+                    <h3>Combo Fiestón 40</h3>
+                    <p>40 alitas + 500 gr de papa + 4 salsas</p>
+                    <span class="price">$28.00</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="costillas" class="menu-section alternate-bg">
+            <h2 class="section-title">Costillas 🍖</h2>
+            <p class="section-subtitle">Sabor incomparable...</p>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Costilla Clásica</h3>
+                    <p>250g costilla de cerdo + 200g papas + 1 salsa</p>
+                    <span class="price">$6.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Solo Costilla</h3>
+                    <p>250g costilla de cerdo SIN papa + 1 salsa</p>
+                    <span class="price">$5.75</span>
+                </div>
+                <div class="menu-item featured">
+                    <h3>Costialitas (Mixto)</h3>
+                    <p>250g costilla de cerdo + 4 alitas + 250g papas + 2 salsas</p>
+                    <span class="price">$9.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Costillas para Dos</h3>
+                    <p>2 porciones de 125g costilla + 8 alitas + 2 porciones de 200g papas + 2 salsas</p>
+                    <span class="price">$12.50</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="hamburguesas" class="menu-section">
+            <h2 class="section-title">Hamburguesas 🍔</h2>
+            <p class="section-subtitle">De carne y de pollo. ¡Pruébalas todas!</p>
+
+            <div class="menu-category-header"><h3>Res de la Casa</h3></div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Clásica</h3>
+                    <p>Carne, Queso + 50g papas</p>
+                    <span class="price">$1.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Clásica Especial</h3>
+                    <p>Carne, Queso, Tocino + 50g papas</p>
+                    <span class="price">$2.50</span>
+                </div>
+                 <div class="menu-item">
+                    <h3>Hawiana</h3>
+                    <p>Carne, Queso, Piña + 50g papas</p>
+                    <span class="price">$2.75</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Completa</h3>
+                    <p>Carne, Queso, Huevo, Tocino + 50g papas</p>
+                    <span class="price">$2.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Mega</h3>
+                    <p>2 Carnes, Queso, Huevo, Tocino + 100g papas</p>
+                    <span class="price">$3.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Ranchera</h3>
+                    <p>3 Carnes, 2 Tocino, Queso, Huevo + 100g papas</p>
+                    <span class="price">$4.50</span>
+                </div>
+                 <div class="menu-item">
+                    <h3>Especial</h3>
+                    <p>2 Carnes, Queso, Chorizo, Salsa a elección + 100g papas</p>
+                    <span class="price">$4.50</span>
+                </div>
+                 <div class="menu-item featured">
+                    <h3>Choriburguer</h3>
+                    <p>2 Carnes, 2 Chorizo, Queso, Tocino + 100g papas</p>
+                    <span class="price">$4.50</span>
+                </div>
+            </div>
+
+            <div class="menu-category-header" style="margin-top: 30px;"><h3>Línea de Pollo y Mixtas</h3></div>
+            <div class="menu-grid">
+                 <div class="menu-item">
+                    <h3>Pollo Normal</h3>
+                    <p>Pollo, Queso + 50g papas</p>
+                    <span class="price">$2.99</span>
+                </div>
+                 <div class="menu-item">
+                    <h3>Pollo Doble</h3>
+                    <p>2 Pollo, Tocino, Queso + 100g papas</p>
+                    <span class="price">$4.50</span>
+                </div>
+                <div class="menu-item featured">
+                    <h3>Pollo y Carne</h3>
+                    <p>Pollo, Carne, Queso, Tocino + 100g papas</p>
+                    <span class="price">$4.00</span>
+                </div>
+            </div>
+        </section>
+
+         <section class="menu-section alternate-bg">
+            <h2 class="section-title">Hot-Dogs 🌭</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Simple</h3>
+                    <p>Chips, aderezos</p>
+                    <span class="price">$1.99</span>
+                </div>
+                 <div class="menu-item">
+                    <h3>Especial</h3>
+                    <p>Chips, aderezos + 50g papa</p>
+                    <span class="price">$2.50</span>
+                </div>
+                 <div class="menu-item featured">
+                    <h3>Doble</h3>
+                    <p>2 Salchichas, Queso, Tocino, Chips, aderezos + 100g papa</p>
+                    <span class="price">$3.50</span>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="otros" class="menu-section">
+            <h2 class="section-title">Papas Especiales y Ensaladas 🍟🥗</h2>
+            <p class="section-subtitle">Nuevas formas de comer papitas. Súper crujientes.</p>
+
+            <div class="menu-grid two-columns">
+                <div>
+                    <h3 class="submenu-title">Papas</h3>
+                    <ul class="simple-list">
+                        <li><strong>Porción de papa:</strong> $1.75</li>
+                        <li><strong>Papa tocino:</strong> (tocino, queso, 200g papas) <span>$2.99</span></li>
+                        <li><strong>Salchipapa:</strong> (salchicha, queso, 200g papas) <span>$2.99</span></li>
+                        <li><strong>Papipollo:</strong> (trocitos pollo crujientes, 200g papas) <span>$3.25</span></li>
+                         <li><strong>Papicarne:</strong> (trocitos carne, 200g papas) <span>$3.75</span></li>
+                        <li><strong>Papa mixta (Pollo o Carne):</strong> (pollo/carne, salchicha, huevo, 250g papas) <span>$3.50</span></li>
+                        <li><strong>Papa mixta especial:</strong> (6-8 trozos pollo, tocino, 200g papas) <span>$3.25</span></li>
+                         <li><strong>Papa completa:</strong> (carne, pollo, salchicha, huevo, 300g papas) <span>$4.50</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="submenu-title">Ensaladas y Extras</h3>
+                    <div class="menu-item">
+                        <h3>Ensalada César <span class="badge-new">Nuevo</span></h3>
+                        <p>Lechuga crespa, tomate, pollo plancha, aderezo césar, parmesano, crotones, vinagreta.</p>
+                        <span class="price">$4.25</span>
+                    </div>
+                     <h3 class="submenu-title" style="margin-top: 20px;">Extras</h3>
+                     <ul class="simple-list">
+                        <li>Porción de Crema, Piña, Queso, Huevo, Tocino, Salchicha o Salsa: <span>$0.75 c/u</span></li>
+                        <li>Porción de Carne: <span>$1.50</span></li>
+                        <li>Porción Pollo o Alas: <span>$1.75</span></li>
+                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="bebidas" class="menu-section alternate-bg">
+            <h2 class="section-title">Bebidas y Batidos 🥤</h2>
+            
+            <div class="drinks-grid">
+                <div class="drink-category">
+                    <h3>Gaseosas y Agua</h3>
+                    <ul>
+                        <li>Agua <span>$0.75</span></li>
+                        <li>Gaseosa Personal CC <span>$0.85</span></li>
+                        <li>Gaseosa Mediana CC <span>$1.10</span></li>
+                        <li>Fuzetea <span>$1.10</span></li>
+                        <li>Gaseosa Grande 1L CC <span>$1.85</span></li>
+                        <li>Fuzetea 1L <span>$1.85</span></li>
+                        <li>Pepsi 2L <span>$2.00</span></li>
+                    </ul>
+                </div>
+                <div class="drink-category">
+                    <h3>Jugos y Batidos</h3>
+                    <p class="sabores">Sabores: Mora, Maracuyá, Limón, Piña, Frutilla, Guanábana, Coco (Nuevo).</p>
+                    <ul>
+                        <li>Vaso Jugo (470ml) <span>$1.50</span></li>
+                        <li>Jugo Granizado (470ml) <span>$2.00</span></li>
+                        <li>Batido (470ml) <span>$2.50</span></li>
+                        <li>Media Jarra Jugo <span>$2.50</span></li>
+                        <li>Jarra Jugo <span>$4.50</span></li>
+                    </ul>
+                </div>
+                 <div class="drink-category">
+                    <h3>Especiales</h3>
+                    <ul>
+                        <li>Limonada de Coco <span>$2.00</span></li>
+                        <li>Milkshakes <span>$2.50</span><br><small>(Oreo, chocolate, café, mora, frutilla, mocachino, maracuyá)</small></li>
+                    </ul>
+                </div>
+                <div class="drink-category">
+                    <h3>Cervezas 🍺</h3>
+                    <ul>
+                        <li>Pilsener (330ml) <span>$1.75</span></li>
+                        <li>Club (330ml) <span>$2.25</span></li>
+                        <li>Corona <span>$2.75</span></li>
+                        <li>Michelada <span>$3.25</span></li>
+                        <li>Pilsener (550ml) <span>$2.50</span></li>
+                        <li>Club (550ml) <span>$3.00</span></li>
+                        <li>Promoción: Dos Micheladas <span>$6.00</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3>Contáctanos</h3>
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:0999058976">099 905 8976</a></p>
+                <p><i class="fas fa-phone-alt"></i> <a href="tel:0998064192">099 806 4192</a></p>
+                <p><i class="fas fa-envelope"></i> vale-s15@hotmail.com</p>
+                <p class="delivery-note">Todos los pedidos para llevar tienen un valor adicional. ¡Pídelo a domicilio!</p>
+            </div>
+            <div class="footer-column">
+                <h3>Ubicación y Horario</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Av. Venezuela y Padre Germán Maya, frente a la hamburguesa. Santo Domingo, Ecuador.</p>
+                <p><i class="far fa-clock"></i> Horario: 15h00 a 23h00</p>
+            </div>
+            <div class="footer-column">
+                <h3>Síguenos y Políticas</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com/barbecueyalgomas" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/barbecueyalgomas" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="pet-friendly"><i class="fas fa-paw"></i> Trae a tu mascota con su correa.</p>
+                <p>Quejas y sugerencias bienvenidas a nuestros teléfonos.</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Barbecue y Algo Más. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
