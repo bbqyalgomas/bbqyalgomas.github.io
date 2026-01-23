@@ -1,953 +1,899 @@
-/* --- Reseteo y Variables Globales --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbecue y Algo Más | Menú Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
 
-:root {
-    --primary-color: #d35400; /* Naranja quemado BBQ */
-    --secondary-color: #2c3e50; /* Azul oscuro/Gris */
-    --accent-color: #e67e22; /* Naranja más brillante */
-    --light-bg: #f9f9f9;
-    --dark-bg: #1a1a1a;
-    --text-dark: #333;
-    --text-light: #fff;
-    --font-family: 'Poppins', sans-serif;
-}
-
-body {
-    font-family: var(--font-family);
-    color: var(--text-dark);
-    line-height: 1.6;
-    background-color: var(--light-bg);
-}
-
-
-
-
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+				<img src="logo.webp" alt="BBQ y Algo Más" class="logo-img">
+			</a>
+            <ul class="nav-links">
+                <li><a href="#alitas">Alitas</a></li>
+                <li><a href="#costillas">Costillas</a></li>
+                <li><a href="#hamburguesas">Hamburguesas</a></li>
+                <li><a href="#otros">Papas y Más</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
 
 
 
+	<header class="hero">
+		<div class="hero-carousel">
+            <div class="hero-slide active" style="background-image: url('img/1.jpg');"></div>
+
+            <div class="hero-slide" style="background-image: url('img/2.jpg');"></div>
+
+            <div class="hero-slide" style="background-image: url('img/3.jpg');"></div>
+
+            <div class="overlay-gradient"></div>
+        </div>
+
+		<div class="hero-content">
+			
+			<h1>Alitas realmente <span class="highlight">sabrosas...</span><br>Sabor incomparable.</h1>
+			<p>Alitas | Costillas | Hamburguesas | Papas</p>
+			
+			<div class="hero-buttons">
+				<a href="#menu-start" class="btn-primary">Ver Menú</a>
+				<a href="https://maps.app.goo.gl/FaupKrAg7nN9fAQs7" class="btn-secondary">Ubicación</a>
+			</div>
+			
+			<div class="carousel-controls">
+				<button class="carousel-btn prev-btn"><i class="fas fa-arrow-left"></i></button>
+				<button class="carousel-btn next-btn"><i class="fas fa-arrow-right"></i></button>
+			</div>
+		</div>
+	</header>
 
 
-#pedido-box {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 260px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    padding: 15px;
-    z-index: 999;
-    font-family: 'Poppins', sans-serif;
-}
+    <div class="iva-note" id="menu-start">
+        <p><i class="fas fa-info-circle"></i> Nota: Los precios mostrados en el menú <strong>NO incluyen IVA</strong>. Se añadirá un 15% de IVA en su factura final.</p>
+    </div>
 
-#pedido-box h3 {
-    margin-top: 0;
-    font-size: 16px;
-}
+    <main class="container menu-container">
 
-#pedido-lista {
-    list-style: none;
-    padding: 0;
-    margin: 10px 0;
-    max-height: 150px;
-    overflow-y: auto;
-}
+        <section id="alitas" class="menu-section">
+            <h2 class="section-title">Alitas y Combos 🍗</h2>
+            <p class="section-subtitle">¡Alitas realmente sabrosas! Nuevos sabores: Frutos Rojos y Super Picante.</p>
+            
+            <div class="salsa-info">
+                <p><strong>Salsas disponibles:</strong> BBQ, BBQ Picante, Miel y Mostaza, Jack Daniels, Maracuyá, Frutos Rojos, Super Picante. (Salsa adicional: $0.75)</p>
+            </div>
 
-#pedido-lista li {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Combo 3 alitas</h3>
+                    <p>3 alitas + 125 gr de papa + 1 salsa</p>
+                    <span class="price">$3.50</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Combo 6 alitas</h3>
+                    <p>6 alitas + 200 gr de papa + 1 salsa</p>
+                    <span class="price">$4.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Solo Alitas (8)</h3>
+                    <p>8 alitas sin papas + 2 salsas</p>
+                    <span class="price">$5.50</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Combo 12 alitas</h3>
+                    <p>12 alitas + 200 gr de papa + 2 salsas</p>
+                    <span class="price">$8.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Combo 18 alitas</h3>
+                    <p>18 alitas + 200 gr de papa + 2 salsas</p>
+                    <span class="price">$12.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Combo 24 alitas</h3>
+                    <p>24 alitas + 325 gr de papa + 3 salsas</p>
+                    <span class="price">$16.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Combo 30 alitas</h3>
+                    <p>30 alitas + 400 gr de papa + 3 salsas</p>
+                    <span class="price">$20.50</span>
+                </div>
+                <div class="menu-item featured">
+                    <h3>Combo 40 alitas</h3>
+                    <p>40 alitas + 500 gr de papa + 4 salsas</p>
+                    <span class="price">$28.00</span>
+                </div>
+            </div>
+        </section>
 
-#enviar-whatsapp {
-    width: 100%;
-    background: #25D366;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 15px;
-    cursor: pointer;
-}
+        <section id="costillas" class="menu-section alternate-bg">
+            <h2 class="section-title">Costillas 🍖</h2>
+            <p class="section-subtitle">Sabor incomparable...</p>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Costilla Clásica</h3>
+                    <p>250g costilla de cerdo + 200g papas + 1 salsa</p>
+                    <span class="price">$6.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Solo Costilla</h3>
+                    <p>250g costilla de cerdo SIN papa + 1 salsa</p>
+                    <span class="price">$5.75</span>
+                </div>
+                <div class="menu-item featured">
+                    <h3>Costialitas (Mixto)</h3>
+                    <p>250g costilla de cerdo + 4 alitas + 250g papas + 2 salsas</p>
+                    <span class="price">$9.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Costillas para Dos</h3>
+                    <p>2 porciones de 125g costilla + 8 alitas + 2 porciones de 200g papas + 2 salsas</p>
+                    <span class="price">$12.50</span>
+                </div>
+            </div>
+        </section>
 
-#enviar-whatsapp:hover {
-    background: #1ebe5d;
-}
+        <section id="hamburguesas" class="menu-section">
+            <h2 class="section-title">Hamburguesas 🍔</h2>
+            <p class="section-subtitle">De carne y de pollo. ¡Pruébalas todas!</p>
 
-#pedido-lista li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    margin-bottom: 6px;
-}
+            <div class="menu-category-header"><h3>Res de la Casa</h3></div>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Clásica</h3>
+                    <p>Carne, Queso + 50g papas</p>
+                    <span class="price">$1.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Clásica Especial</h3>
+                    <p>Carne, Queso, Tocino + 50g papas</p>
+                    <span class="price">$2.50</span>
+                </div>
+                 <div class="menu-item">
+                    <h3>Hawiana</h3>
+                    <p>Carne, Queso, Piña + 50g papas</p>
+                    <span class="price">$2.75</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Completa</h3>
+                    <p>Carne, Queso, Huevo, Tocino + 50g papas</p>
+                    <span class="price">$2.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Mega</h3>
+                    <p>2 Carnes, Queso, Huevo, Tocino + 100g papas</p>
+                    <span class="price">$3.99</span>
+                </div>
+                <div class="menu-item">
+                    <h3>Ranchera</h3>
+                    <p>3 Carnes, 2 Tocino, Queso, Huevo + 100g papas</p>
+                    <span class="price">$4.50</span>
+                </div>
+                 <div class="menu-item">
+                    <h3>Especial</h3>
+                    <p>2 Carnes, Queso, Chorizo, Salsa a elección + 100g papas</p>
+                    <span class="price">$4.50</span>
+                </div>
+                 <div class="menu-item featured">
+                    <h3>Choriburguer</h3>
+                    <p>2 Carnes, 2 Chorizo, Queso, Tocino + 100g papas</p>
+                    <span class="price">$4.50</span>
+                </div>
+            </div>
 
-.remove-item {
-    background: none;
-    border: none;
-    color: #e74c3c;
-    font-size: 16px;
-    cursor: pointer;
-}
+            <div class="menu-category-header" style="margin-top: 30px;"><h3>Línea de Pollo y Mixtas</h3></div>
+            <div class="menu-grid">
+                 <div class="menu-item">
+                    <h3>Pollo Normal</h3>
+                    <p>Pollo, Queso + 50g papas</p>
+                    <span class="price">$2.99</span>
+                </div>
+                 <div class="menu-item">
+                    <h3>Pollo Doble</h3>
+                    <p>2 Pollo, Tocino, Queso + 100g papas</p>
+                    <span class="price">$4.50</span>
+                </div>
+                <div class="menu-item featured">
+                    <h3>Pollo y Carne</h3>
+                    <p>Pollo, Carne, Queso, Tocino + 100g papas</p>
+                    <span class="price">$4.00</span>
+                </div>
+            </div>
+        </section>
 
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
+        
 
-.modal-content {
-    background: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    width: 320px;
-    max-width: 90%;
-}
+        <section id="papas" class="menu-section">
+            <h2 class="section-title">Papas 🍟</h2>
+            <p class="section-subtitle">Nuevas formas de comer papitas. Súper crujientes.</p>
 
-.salsa-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin: 15px 0;
-}
+            <div class="menu-grid">
 
-.salsa-btn {
-    padding: 10px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background: #f9f9f9;
-    cursor: pointer;
-    font-size: 14px;
-}
+                
 
-.salsa-btn.active {
-    border-color: #e74c3c;
-    background: #ffeaea;
-}
+                <div class="menu-item">
+                    <h3>Salchipapa</h3>
+                    <p>Salchicha, queso + 200g papas</p>
+                    <span class="price">$2.99</span>
+                </div>
 
-.modal-actions {
-    display: flex;
-    justify-content: space-between;
-}
+                <div class="menu-item">
+                    <h3>Papipollo</h3>
+                    <p>Trocitos de pollo crujiente + 200g papas</p>
+                    <span class="price">$3.25</span>
+                </div>
 
-.modal-actions button {
-    padding: 8px 14px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
+                <div class="menu-item">
+                    <h3>Papicarne</h3>
+                    <p>Trocitos de carne + 200g papas</p>
+                    <span class="price">$3.75</span>
+                </div>
 
-#confirmar-salsa {
-    background: #25D366;
-    color: white;
-}
+                <div class="menu-item">
+                    <h3>Papa Mixta</h3>
+                    <p>Pollo o carne, salchicha, huevo + 250g papas</p>
+                    <span class="price">$3.50</span>
+                </div>
 
-#cancelar-salsa {
-    background: #ccc;
-}
+                <div class="menu-item featured">
+                    <h3>Papa Mixta Especial</h3>
+                    <p>6–8 trozos de pollo, tocino + 200g papas</p>
+                    <span class="price">$3.25</span>
+                </div>
+
+                <div class="menu-item featured">
+                    <h3>Papa Completa</h3>
+                    <p>Carne, pollo, salchicha, huevo + 300g papas</p>
+                    <span class="price">$4.50</span>
+                </div>
+
+                <div class="menu-item">
+                    <h3>Papa Tocino</h3>
+                    <p>Tocino, queso + 200g papas</p>
+                    <span class="price">$2.99</span>
+                </div>
+
+                <div class="menu-item">
+                    <h3>Porción de Papa</h3>
+                    <p>200g de papas fritas</p>
+                    <span class="price">$1.75</span>
+                </div>
 
 
+            </div>
+        </section>
+
+        <section id="hotdog" class="menu-section alternate-bg">
+            <h2 class="section-title">Hot-Dogs 🌭</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Simple</h3>
+                    <p>Chips, aderezos</p>
+                    <span class="price">$1.99</span>
+                </div>
+                 <div class="menu-item">
+                    <h3>Especial</h3>
+                    <p>Chips, aderezos + 50g papa</p>
+                    <span class="price">$2.50</span>
+                </div>
+                 <div class="menu-item featured">
+                    <h3>Doble</h3>
+                    <p>2 Salchichas, Queso, Tocino, Chips, aderezos + 100g papa</p>
+                    <span class="price">$3.50</span>
+                </div>
+            </div>
+        </section>
+ 
+        
+
+        <section id="otros" class="menu-section">
+            <h2 class="section-title">Especiales y Extras 🍟🥗</h2>
+            <p class="section-subtitle">Nuevas formas de comer papitas. Súper crujientes.</p>
+
+            <div class="otros-layout">
+
+                <!-- COLUMNA IZQUIERDA -->
+                <div class="otros-left">
+                    <div class="menu-item featured">
+                        <h3>Ensalada César <span class="badge-new">Nuevo</span></h3>
+                        <p>Lechuga crespa, tomate, pollo plancha, aderezo césar, parmesano, crotones, vinagreta.</p>
+                        <span class="price">$4.25</span>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DERECHA -->
+                <div class="otros-right">
+                    <h3 class="submenu-title">Extras</h3>
+
+                    <div class="extras-buttons">
+                        <button class="extra-btn" data-nombre="Crema" data-precio="0.75">
+                            Crema <span>$0.75</span>
+                        </button>
+
+                        <button class="extra-btn" data-nombre="Piña" data-precio="0.75">
+                            Piña <span>$0.75</span>
+                        </button>
+
+                        <button class="extra-btn" data-nombre="Queso" data-precio="0.75">
+                            Queso <span>$0.75</span>
+                        </button>
+
+                        <button class="extra-btn" data-nombre="Huevo" data-precio="0.75">
+                            Huevo <span>$0.75</span>
+                        </button>
+
+                        <button class="extra-btn" data-nombre="Tocino" data-precio="0.75">
+                            Tocino <span>$0.75</span>
+                        </button>
+
+                        <button class="extra-btn" data-nombre="Salchicha" data-precio="0.75">
+                            Salchicha <span>$0.75</span>
+                        </button>
+
+                        <button class="extra-btn" data-nombre="Salsa" data-precio="0.75">
+                            Salsa <span>$0.75</span>
+                        </button>
+
+                        <button class="extra-btn" data-nombre="Carne" data-precio="1.50">
+                            Carne <span>$1.50</span>
+                        </button>
+
+                        <button class="extra-btn" data-nombre="Pollo / Alas" data-precio="1.75">
+                            Pollo / Alas <span>$1.75</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
 
 
 
 
-/* --- ESTILOS COMPLETOS DEL LOGO CON ZOOM --- */
 
-/* 1. Resetear estilos del link contenedor */
-a.logo {
-    display: flex !important;
-    align-items: center !important;
-    padding: 0 !important;
-    text-decoration: none !important;
-    height: 100% !important; 
-}
 
-/* 2. Estilos de la IMAGEN (Normal) */
-.logo img {
-    /* Tamaño base pequeño */
-    height: 90px !important; 
+
+
+        <section id="bebidas" class="menu-section alternate-bg">
+            <h2 class="section-title">Bebidas y Batidos 🥤</h2>
+            
+            <div class="drinks-grid">
+                <div class="drink-category">
+                    <h3>Gaseosas y Agua</h3>
+                        <div class="drinks-buttons">
+                            <button class="drink-btn" data-nombre="Agua" data-precio="0.75">Agua <span>$0.75</span></button>
+                            <button class="drink-btn" data-nombre="Gaseosa Personal CC" data-precio="0.85">Gaseosa Personal CC <span>$0.85</span></button>
+                            <button class="drink-btn" data-nombre="Gaseosa Mediana CC" data-precio="1.10">Gaseosa Mediana CC <span>$1.10</span></button>
+                            <button class="drink-btn" data-nombre="Fuzetea" data-precio="1.10">Fuzetea <span>$1.10</span></button>
+                            <button class="drink-btn" data-nombre="Gaseosa Grande 1L CC" data-precio="1.85">Gaseosa Grande 1L CC <span>$1.85</span></button>
+                            <button class="drink-btn" data-nombre="Fuzetea 1L" data-precio="1.85">Fuzetea 1L <span>$1.85</span></button>
+                            <button class="drink-btn" data-nombre="Pepsi 2L" data-precio="2.00">Pepsi 2L <span>$2.00</span></button>
+                        </div>
+                </div>
+                <div class="drink-category">
+                    <h3>Jugos y Batidos</h3>
+                    <p class="sabores">Sabores: Mora, Maracuyá, Limón, Piña, Frutilla, Guanábana, Coco (Nuevo).</p>
+                    <div class="drinks-buttons">
+                        <button class="drink-btn" data-sabor="true" data-nombre="Vaso Jugo 470ml" data-precio="1.50">Vaso Jugo (470ml) <span>$1.50</span></button>
+                        <button class="drink-btn" data-sabor="true" data-nombre="Jugo Granizado 470ml" data-precio="2.00">Jugo Granizado (470ml) <span>$2.00</span></button>
+                        <button class="drink-btn" data-sabor="true" data-nombre="Batido 470ml" data-precio="2.50">Batido (470ml) <span>$2.50</span></button>
+                        <button class="drink-btn" data-sabor="true" data-nombre="Media Jarra Jugo" data-precio="2.50">Media Jarra Jugo <span>$2.50</span></button>
+                        <button class="drink-btn" data-sabor="true" data-nombre="Jarra Jugo" data-precio="4.50">Jarra Jugo <span>$4.50</span></button>
+                    </div>
+                </div>
+                 <div class="drink-category">
+                        <h3>Bebidas Especiales</h3>
+                        <div class="drinks-buttons">
+                            <button class="drink-btn" data-nombre="Limonada de Coco" data-precio="2.00">Limonada de Coco <span>$2.00</span></button>
+                            <button class="drink-btn" data-nombre="Milkshake" data-precio="2.50">Milkshake <span>$2.50</span></button>
+                        </div>
+                </div>
+                <div class="drink-category">
+                    <h3>Cervezas 🍺</h3>
+                    <div class="drinks-buttons">
+                        <button class="drink-btn" data-nombre="Pilsener 330ml" data-precio="1.75">Pilsener (330ml) <span>$1.75</span></button>
+                        <button class="drink-btn" data-nombre="Club 330ml" data-precio="2.25">Club (330ml) <span>$2.25</span></button>
+                        <button class="drink-btn" data-nombre="Corona" data-precio="2.75">Corona <span>$2.75</span></button>
+                        <button class="drink-btn" data-nombre="Michelada" data-precio="3.25">Michelada <span>$3.25</span></button>
+                        <button class="drink-btn" data-nombre="Pilsener 550ml" data-precio="2.50">Pilsener (550ml) <span>$2.50</span></button>
+                        <button class="drink-btn" data-nombre="Club 550ml" data-precio="3.00">Club (550ml) <span>$3.00</span></button>
+                        <button class="drink-btn" data-nombre="Promo Dos Micheladas" data-precio="6.00">Promo Dos Micheladas <span>$6.00</span></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto">
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h3>Contáctanos</h3>
+                <p>
+					<i class="fab fa-whatsapp"></i> 
+					<a href="https://wa.me/593999058976" target="_blank">099 905 8976</a>
+				</p>
+
+				<p>
+					<i class="fab fa-whatsapp"></i> 
+					<a href="https://wa.me/593998064192" target="_blank">099 806 4192</a>
+				</p>
+                <p><i class="fas fa-envelope"></i> vale-s15@hotmail.com</p>
+                <p class="delivery-note">Todos los pedidos para llevar tienen un valor adicional. ¡Pídelo a domicilio!</p>
+            </div>
+            <div class="footer-column">
+				<h3>Ubicación y Horario</h3>
+				
+				<p>
+					<a href="https://www.google.com/maps/search/Av.+Venezuela+y+Padre+Germán+Maya,+Santo+Domingo,+Ecuador" target="_blank" class="map-link">
+						<i class="fas fa-map-marker-alt"></i> Av. Venezuela y Padre Germán Maya, frente a la hamburguesa. Santo Domingo, Ecuador.
+					</a>
+				</p>
+
+				<p><i class="far fa-clock"></i> Horario: 15h00 a 23h00</p>
+			</div>
+            <div class="footer-column">
+                <h3>Síguenos y Políticas</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com/barbecueyalgomas" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/barbecueyalgomas" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+                <p class="pet-friendly"><i class="fas fa-paw"></i> Trae a tu mascota con su correa.</p>
+                <p>Todas las quejas y sugerencias son bienvenidas a nuestros teléfonos.</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Barbecue y Algo Más. Todos los derechos reservados.</p>
+        </div>
+    </footer>
     
-    width: auto !important; 
-    object-fit: contain !important; 
-    margin: 0 !important;
-    display: block !important;
+    <div id="pedido-box">
+        <h3>🧾 Tu pedido</h3>
+        <ul id="pedido-lista"></ul>
+        <p id="pedido-total"><strong>Total:</strong> $0.00</p>
+        <button id="enviar-whatsapp">
+            <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+        </button>
+    </div>
 
-    /* AGREGADO: Esto permite que la animación sea suave */
-    transition: transform 0.3s ease !important;
-}
+    <div id="salsa-modal" class="modal">
+
+
 
-/* 3. AGREGADO: Efecto ZOOM al pasar el mouse */
-a.logo:hover img {
-    /* Esto hace que crezca un 20% más grande */
-    transform: scale(1.2) !important; 
-}
+
+        <div class="modal-content">
+            <h3>Selecciona tus salsas</h3>
+            <div id="salsa-opciones" class="salsa-grid"></div>
+
+            <div class="modal-actions">
+                <button id="cancelar-salsa">Cancelar</button>
+                <button id="confirmar-salsa">Agregar</button>
+            </div>
+        </div>
+    </div>
 
-/* 4. Barra de navegación */
-.navbar {
-    padding: 5px 0 !important; 
-    min-height: 55px !important; 
-    display: flex !important;
-    align-items: center !important;
-}
-
-.nav-container {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    height: 100% !important;
-}
-
-
-
-
-
-
-
-
-
-
-
-/* 5. Versión Celular */
-@media (max-width: 768px) {
-    .logo img {
-        height: 70px !important; 
-        max-width: 180px !important;
-    }
-    .navbar {
-        min-height: 50px !important;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --- Utilidades --- */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-ul {
-    list-style: none;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--primary-color);
-    margin-bottom: 40px;
-    font-weight: 600;
-}
-
-.alternate-bg {
-    background-color: #fff;
-    padding: 60px 0;
-}
-
-.badge-new {
-    background-color: var(--accent-color);
-    color: white;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-left: 5px;
-}
-
-/* --- Navbar --- */
-.navbar {
-    background-color: var(--secondary-color);
-    color: var(--text-light);
-    padding: 1rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent-color);
-}
-
-.nav-links {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    transition: color 0.3s;
-    font-weight: 600;
-}
-
-.nav-links a:hover {
-    color: var(--accent-color);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --- Hero Section Moderno --- */
-.hero {
-    position: relative;
-    height: 100vh; /* Ocupa toda la altura de la pantalla */
-    width: 100%;
-    overflow: hidden; /* Evita que las imágenes se salgan */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-light);
-    margin-top: 0; /* Quitamos margin top para que toque el navbar si es transparente */
-}
-
-/* El contenedor de las imágenes */
-.hero-carousel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-/* Cada diapositiva */
-.hero-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out, transform 6s ease; /* Transición suave + Zoom */
-    transform: scale(1); /* Empezamos en tamaño normal */
-}
-
-/* Estado activo: visible y con zoom lento (Efecto Ken Burns) */
-.hero-slide.active {
-    opacity: 1;
-    transform: scale(1.1); /* Hace un zoom suave hacia adentro */
-}
-
-/* Capa oscura para leer el texto sobre las fotos */
-.overlay-gradient {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.8));
-    z-index: 2;
-}
-
-/* --- Contenido del Texto --- */
-.hero-content {
-    position: relative;
-    z-index: 3; /* Encima de las fotos */
-    text-align: center;
-    max-width: 800px;
-    padding: 20px;
-    animation: fadeInUp 1s ease-out; /* Animación de entrada del texto */
-}
-
-.badge-hero {
-    background-color: var(--accent-color);
-    color: #fff;
-    padding: 5px 15px;
-    border-radius: 50px;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    display: inline-block;
-}
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    line-height: 1.1;
-    margin-bottom: 20px;
-    font-weight: 700;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-}
-
-.hero-content h1 .highlight {
-    color: var(--primary-color);
-    font-style: italic;
-}
-
-.hero-content p {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 300;
-}
-
-/* --- Botones del Hero --- */
-.hero-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.btn-primary {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 15px rgba(211, 84, 0, 0.4);
-}
-
-.btn-primary:hover {
-    background-color: var(--accent-color);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(211, 84, 0, 0.6);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    border: 2px solid white;
-    color: white;
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: all 0.3s;
-}
-
-.btn-secondary:hover {
-    background-color: white;
-    color: var(--secondary-color);
-}
-
-/* --- Controles del Carrusel (Flechas Minimalistas) --- */
-.carousel-controls {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.carousel-btn {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255,255,255,0.3);
-    color: white;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.2rem;
-    transition: all 0.3s;
-    display: flex; /* Para centrar el icono */
-    align-items: center;
-    justify-content: center;
-    /* Quitamos position absolute para que estén debajo del texto */
-    position: static; 
-    transform: none;
-}
-
-.carousel-btn:hover {
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    transform: scale(1.1);
-}
-
-/* Animación de entrada */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* --- Responsive para Móviles --- */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    .hero-content p {
-        font-size: 1rem;
-    }
-    .hero-buttons {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto 30px auto;
-    }
-    .btn-primary, .btn-secondary {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-
-
-/* --- Estilos para las Flechas del Carrusel --- */
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%); /* Centrar verticalmente */
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    padding: 10px;
-    z-index: 10; /* Asegura que estén encima de las fotos */
-    border-radius: 50%; /* Redondos */
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.3s;
-}
-
-.carousel-btn:hover {
-    background-color: var(--primary-color); /* Se ponen naranja al pasar el mouse */
-}
-
-.prev-btn {
-    left: 10px; /* Flecha izquierda */
-}
-
-.next-btn {
-    right: 10px; /* Flecha derecha */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-.otros-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* ensalada / extras */
-    gap: 24px;
-    align-items: start;
-}
-
-
-.extras-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.extra-btn {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 6px 12px;
-    font-size: 13px;
-    cursor: pointer;
-    display: flex;
-    gap: 6px;
-    align-items: center;
-    transition: all 0.2s ease;
-}
-
-.extra-btn span {
-    font-weight: bold;
-    font-size: 12px;
-}
-
-.extra-btn:hover {
-    border-color: #ff9800;
-    background: #fff7ec;
-}
-
-.extra-btn.active {
-    background: #ff9800;
-    color: #fff;
-    border-color: #ff9800;
-}
-
-.extra-btn.active span {
-    color: #fff;
-}
-
-
-
-@media (max-width: 768px) {
-    .otros-layout {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-
-
-
-
-.drinks-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 10px;
-    margin-top: 10px;
-}
-
-
-
-
-.drink-btn {
-    background: #fff;
-    border: 1.5px solid #ddd;
-    border-radius: 14px;
-    padding: 10px 12px;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: all 0.2s ease;
-    text-align: left;
-}
-
-
-.drink-btn:hover {
-    border-color: #ff9800;
-    transform: translateY(-1px);
-}
-
-
-.drink-btn.active {
-    background: #ff9800;
-    color: #fff;
-    border-color: #ff9800;
-}
-
-
-.drink-btn span {
-    font-weight: 600;
-    font-size: 13px;
-    opacity: 0.9;
-}
-@media (max-width: 600px) {
-    .drinks-buttons {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-/* ... el resto del CSS (.hero-content p, .btn-primary) sigue igual abajo ... */
-
-
-
-/* --- Nota de IVA --- */
-.iva-note {
-    background-color: #fff3cd;
-    color: #856404;
-    text-align: center;
-    padding: 15px;
-    border-bottom: 2px solid #ffeeba;
-}
-
-/* --- Layout del Menú --- */
-.menu-container {
-    padding: 40px 0;
-}
-
-.menu-section {
-    margin-bottom: 60px;
-    padding: 40px 20px;
-    border-radius: 15px;
-}
-
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 25px;
-}
-
-.salsa-info, .sabores {
-    text-align: center;
-    font-style: italic;
-    margin-bottom: 25px;
-    color: #666;
-}
-
-.menu-category-header h3 {
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-/* --- Tarjetas de Ítems del Menú --- */
-.menu-item {
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s, box-shadow 0.3s;
-    border-top: 3px solid var(--accent-color);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.menu-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.menu-item h3 {
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-}
-
-.menu-item p {
-    color: #666;
-    font-size: 0.95rem;
-    flex-grow: 1; /* Hace que el precio se empuje al fondo */
-}
-
-.menu-item .price {
-    display: block;
-    font-size: 1.4rem;
-    color: var(--primary-color);
-    font-weight: 700;
-    margin-top: 15px;
-    text-align: right;
-}
-
-.menu-item.featured {
-    border-top: 3px solid var(--primary-color);
-    background-color: #fff8f0; /* Fondo ligeramente diferente para destacados */
-}
-
-/* --- Estilos específicos para Papas y Bebidas --- */
-.two-columns {
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-}
-
-.submenu-title {
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-    font-size: 1.3rem;
-}
-
-.simple-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px dotted #ccc;
-}
-
-.simple-list li span {
-    font-weight: bold;
-    color: var(--primary-color);
-}
-
-.drinks-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.drink-category h3 {
-    color: var(--secondary-color);
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.drink-category ul li {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.drink-category ul li span {
-    font-weight: 700;
-    color: var(--primary-color);
-}
-
-/* --- Footer --- */
-footer {
-    background-color: var(--dark-bg);
-    color: #bbb;
-    padding: 60px 0 20px;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-column h3 {
-    color: var(--text-light);
-    margin-bottom: 20px;
-}
-
-.footer-column p {
-    margin-bottom: 12px;
-}
-
-.footer-column a {
-    color: var(--accent-color);
-}
-
-.footer-column i {
-    margin-right: 10px;
-    color: var(--primary-color);
-}
-
-.social-icons a {
-    display: inline-block;
-    margin-right: 15px;
-    font-size: 1.5rem;
-    color: var(--text-light);
-    transition: color 0.3s;
-}
-
-.social-icons a:hover {
-    color: var(--primary-color);
-}
-
-.delivery-note, .pet-friendly {
-    font-weight: bold;
-    color: var(--accent-color);
-    margin-top: 15px;
-}
-
-/* Estilo destacado para la zona Pet Friendly */
-.pet-friendly {
-    /* 1. Crear una "caja" para que resalte del fondo */
-    background-color: rgba(255, 255, 255, 0.05); /* Un fondo muy sutil */
-    border: 2px dashed #ff9f43; /* Borde punteado color naranja/dorado */
-    border-radius: 12px; /* Bordes redondeados */
-    
-    /* 2. Espaciado interno y externo */
-    padding: 15px 20px;
-    margin-top: 25px;      /* Separarlo de los íconos sociales */
-    margin-bottom: 15px;   /* Separarlo del texto de quejas */
-    
-    /* 3. Alinear el ícono y el texto */
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centrar todo */
-    gap: 15px; /* Espacio entre la patita y el texto */
-    
-    /* 4. Texto */
-    color: #fff; /* Aseguramos que el texto sea blanco (o ajusta a tu color) */
-    font-weight: bold;
-    text-align: left; /* El texto alineado a la izquierda del bloque */
-    line-height: 1.2;
-}
-
-/* Estilo específico para el ÍCONO (La patita) */
-.pet-friendly i {
-    font-size: 2.2rem; /* ¡Mucho más grande! (aprox 35px) */
-    color: #ff9f43;    /* Mismo color naranja que el borde */
-    
-    /* Un pequeño giro para que se vea simpático */
-    transform: rotate(-10deg); 
-}
-
-.copyright {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid #333;
-    font-size: 0.9rem;
-}
-
-/* --- Responsive Design (Para Celulares) --- */
-@media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-    }
-    .nav-links {
-        margin-top: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-    }
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    .section-title {
-        font-size: 2rem;
-    }
-    .two-columns {
-        grid-template-columns: 1fr; /* Forza una sola columna en móviles para papas */
-    }
-}
-
-
-.map-link {
-    color: inherit; /* Mantiene el color del texto original */
-    text-decoration: none; /* Quita el subrayado azul feo */
-    transition: color 0.3s;
-}
-
-.map-link:hover {
-    color: #ffcc00; /* Cambia de color cuando pasas el mouse (opcional) */
-    text-decoration: underline; /* Opcional: subraya al pasar el mouse */
-}
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            const nextBtn = document.querySelector('.next-btn');
+            const prevBtn = document.querySelector('.prev-btn');
+            let currentSlide = 0;
+            let slideInterval = setInterval(nextSlide, 5000); // Guardamos el timer en una variable
+
+            function showSlide(index) {
+                // Quitamos la clase active de la actual
+                slides[currentSlide].classList.remove('active');
+                
+                // Actualizamos el índice (lógica circular)
+                currentSlide = index;
+                if (currentSlide >= slides.length) {
+                    currentSlide = 0; 
+                } else if (currentSlide < 0) {
+                    currentSlide = slides.length - 1;
+                }
+
+                // Ponemos la clase active en la nueva
+                slides[currentSlide].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide(currentSlide + 1);
+            }
+
+            function prevSlide() {
+                showSlide(currentSlide - 1);
+            }
+
+            // --- Eventos de los Botones ---
+            nextBtn.addEventListener('click', function() {
+                nextSlide();
+                resetTimer(); // Reinicia el contador para que no cambie de golpe
+            });
+
+            prevBtn.addEventListener('click', function() {
+                prevSlide();
+                resetTimer();
+            });
+
+            // Función para reiniciar el tiempo si el usuario toca un botón
+            function resetTimer() {
+                clearInterval(slideInterval);
+                slideInterval = setInterval(nextSlide, 5000);
+            }
+        });
+
+
+
+
+        // Agregar productos
+        let pedido = [];
+        let total = 0;
+        let tipoPedido = null; // 'llevar' | 'local'
+        let empaques = 0;
+        const costoEmpaque = 0.25;
+
+        function preguntarTipoPedido() {
+            if (tipoPedido !== null) return;
+
+            const respuesta = confirm(
+                '¿Tu pedido es PARA LLEVAR?\n\nAceptar = Para llevar (se cobrará empaques)\nCancelar = Para servirse en el local'
+            );
+
+            tipoPedido = respuesta ? 'llevar' : 'local';
+        }
+        function obtenerEmpaquesPorProducto(item) {
+
+            // ALITAS
+            if (item.closest('#alitas')) {
+
+                // Texto del <p>, ej: "3 alitas + 125 gr de papa + 1 salsa"
+                const descripcion = item.querySelector('p')?.innerText || '';
+
+                // Extraer número antes de la palabra "alitas"
+                const match = descripcion.match(/(\d+)\s*alitas/i);
+                const cantidad = match ? parseInt(match[1]) : 0;
+
+                if (cantidad >= 3 && cantidad <= 8) return 1;
+                if (cantidad >= 9 && cantidad <= 18) return 2;
+                if (cantidad >= 24) return 4;
+
+                return 0;
+            }
+
+            // COSTILLAS
+            if (item.closest('#costillas')) {
+
+                // El tipo esta en el H3
+                const titulo = item.querySelector('h3')?.innerText.toLowerCase() || '';
+
+                // 1 empaque
+                if (
+                    titulo.includes('costilla clásica') ||
+                    titulo.includes('solo costilla')
+                ) {
+                    return 1;
+                }
+
+                // 2 empaques
+                if (
+                    titulo.includes('costialitas') || // OJO: asi esta en tu HTML
+                    titulo.includes('para dos')
+                ) {
+                    return 2;
+                }
+
+                return 0;
+            }
+
+            // HAMBURGUESAS
+            if (item.closest('#hamburguesas')) return 1;
+            // Hot-dog
+            if (item.closest('#hotdog')) return 1;
+            // Papas
+            if (item.closest('#papas')) return 1;
+
+            return 0;
+        }
+
+        const salsasDisponibles = [
+            'BBQ',
+            'BBQ Picante',
+            'Miel y Mostaza',
+            'Jack Daniels',
+            'Maracuyá',
+            'Frutos Rojos',
+            'Super Picante'
+        ];
+
+        let productoPendiente = null;
+
+        // Crear botones de salsas
+        const salsaOpciones = document.getElementById('salsa-opciones');
+        salsasDisponibles.forEach(salsa => {
+            const btn = document.createElement('button');
+            btn.textContent = salsa;
+            btn.classList.add('salsa-btn');
+
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active');
+            });
+
+            salsaOpciones.appendChild(btn);
+        });
+
+        
+
+        // Click en productos
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('click', () => {
+                preguntarTipoPedido();
+                const nombre = item.querySelector('h3').innerText;
+                const precio = parseFloat(
+                    item.querySelector('.price')?.innerText.replace('$', '')
+                ) || 0;
+
+                const esAlitasOCostillas =
+                    item.closest('#alitas') || item.closest('#costillas');
+
+                if (esAlitasOCostillas) {
+                    let empaquesProducto = 0;
+
+                    if (tipoPedido === 'llevar') {
+                        empaquesProducto = obtenerEmpaquesPorProducto(item);
+                    }
+
+                    productoPendiente = {
+                        nombre,
+                        precio,
+                        empaques: empaquesProducto
+                    };
+
+                    abrirModalSalsa();
+                } else {
+                    let empaquesProducto = 0;
+
+                    if (tipoPedido === 'llevar') {
+                        empaquesProducto = obtenerEmpaquesPorProducto(item);
+                        empaques += empaquesProducto;
+                        total += empaquesProducto * costoEmpaque;
+                    }
+                    pedido.push({ nombre, precio, salsas: [] ,
+                                empaques: empaquesProducto
+                    });
+                    total += precio;
+                    actualizarPedido();
+                }
+            });
+        });
+
+        // Click en BEBIDAS
+        document.querySelectorAll('.drink-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                preguntarTipoPedido();
+
+                const nombreBase = btn.dataset.nombre;
+                const precio = parseFloat(btn.dataset.precio);
+                const requiereSabor = btn.dataset.sabor === 'true';
+
+                let sabor = null;
+
+                if (requiereSabor) {
+                    sabor = prompt(
+                        'Elige el sabor:\nMora, Maracuyá, Limón, Piña, Frutilla, Guanábana, Coco'
+                    );
+
+                    if (!sabor) return; // canceló
+                    sabor = sabor.trim();
+                }
+
+                const nombreFinal = sabor
+                    ? `${nombreBase} (${sabor})`
+                    : nombreBase;
+
+                btn.classList.toggle('active');
+
+                const index = pedido.findIndex(
+                    p => p.nombre === nombreFinal && p.esBebida
+                );
+
+                if (index === -1) {
+                    pedido.push({
+                        nombre: nombreFinal,
+                        precio: precio,
+                        salsas: [],
+                        empaques: 0,
+                        esBebida: true
+                    });
+                    total += precio;
+                } else {
+                    total -= pedido[index].precio;
+                    pedido.splice(index, 1);
+                }
+
+                actualizarPedido();
+            });
+        });
+
+
+        // Click en EXTRAS
+        document.querySelectorAll('.extra-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation(); // evita conflictos
+
+                preguntarTipoPedido();
+
+                const nombre = btn.dataset.nombre;
+                const precio = parseFloat(btn.dataset.precio);
+
+                // Toggle visual
+                btn.classList.toggle('active');
+
+                // Ver si ya existe el extra
+                const index = pedido.findIndex(
+                    p => p.nombre === nombre && p.esExtra
+                );
+
+                if (index === -1) {
+                    // AGREGAR EXTRA
+                    pedido.push({
+                        nombre: nombre,
+                        precio: precio,
+                        salsas: [],
+                        empaques: 0,
+                        esExtra: true
+                    });
+                    total += precio;
+                } else {
+                    // QUITAR EXTRA
+                    total -= pedido[index].precio;
+                    pedido.splice(index, 1);
+                }
+
+                actualizarPedido();
+            });
+        });
+
+
+        // Modal
+        function abrirModalSalsa() {
+            document.getElementById('salsa-modal').style.display = 'flex';
+            document.querySelectorAll('.salsa-btn').forEach(b => b.classList.remove('active'));
+        }
+
+        document.getElementById('cancelar-salsa').addEventListener('click', () => {
+            cerrarModal();
+        });
+
+        document.getElementById('confirmar-salsa').addEventListener('click', () => {
+            const salsasSeleccionadas = Array.from(
+                document.querySelectorAll('.salsa-btn.active')
+            ).map(b => b.textContent);
+
+            if (salsasSeleccionadas.length === 0) {
+                alert('Selecciona al menos una salsa');
+                return;
+            }
+
+            pedido.push({
+                nombre: productoPendiente.nombre,
+                precio: productoPendiente.precio,
+                salsas: salsasSeleccionadas,
+                empaques: productoPendiente.empaques
+            });
+
+            total += productoPendiente.precio;
+
+            if (tipoPedido === 'llevar' && productoPendiente.empaques > 0) {
+                empaques += productoPendiente.empaques;
+                total += productoPendiente.empaques * costoEmpaque;
+            }
+
+            actualizarPedido();
+            cerrarModal();
+        });
+
+        function cerrarModal() {
+            document.getElementById('salsa-modal').style.display = 'none';
+            productoPendiente = null;
+        }
+
+        // Actualizar caja del pedido
+        function actualizarPedido() {
+            const lista = document.getElementById('pedido-lista');
+            const totalBox = document.getElementById('pedido-total');
+
+            lista.innerHTML = '';
+
+            pedido.forEach((p, index) => {
+                const li = document.createElement('li');
+
+                const texto = document.createElement('span');
+                texto.textContent = `• ${p.nombre}${p.salsas && p.salsas.length ? ' | Salsas: ' + p.salsas.join(', ') : ''} - $${p.precio.toFixed(2)}`;
+
+
+
+                const btnRemove = document.createElement('button');
+                btnRemove.innerHTML = '❌';
+                btnRemove.classList.add('remove-item');
+
+                btnRemove.addEventListener('click', () => {
+                    quitarProducto(index);
+                });
+
+                li.appendChild(texto);
+                li.appendChild(btnRemove);
+                lista.appendChild(li);
+            });
+            if (tipoPedido === 'llevar' && empaques > 0) {
+                const li = document.createElement('li');
+                li.textContent = `📦 Empaques (${empaques}) - $${(empaques * costoEmpaque).toFixed(2)}`;
+                lista.appendChild(li);
+            }
+            totalBox.innerHTML = `<strong>Total:</strong> $${total.toFixed(2)}`;
+        }
+
+        // Quitar producto
+        function quitarProducto(index) {
+            total -= pedido[index].precio;
+
+            if (tipoPedido === 'llevar' && pedido[index].empaques) {
+                empaques -= pedido[index].empaques;
+                total -= pedido[index].empaques * costoEmpaque;
+            }
+
+            pedido.splice(index, 1);
+            actualizarPedido();
+        }
+
+
+        // Enviar a WhatsApp
+        document.getElementById('enviar-whatsapp').addEventListener('click', () => {
+            if (pedido.length === 0) {
+                alert('Selecciona al menos un producto');
+                return;
+            }
+
+            let mensaje = 'Hola 👋, quiero hacer el siguiente pedido:%0A%0A';
+
+            pedido.forEach(p => {
+                mensaje += `- ${p.nombre}`;
+                if (p.salsas && p.salsas.length) {
+                    mensaje += ` (Salsas: ${p.salsas.join(', ')})`;
+                }
+                mensaje += ` - $${p.precio.toFixed(2)}%0A`;
+            });
+
+            mensaje += `%0A*Total:* $${total.toFixed(2)}`;
+            
+            if (tipoPedido === 'llevar') {
+                mensaje += `%0A📦 Empaques: ${empaques} ($${(empaques * costoEmpaque).toFixed(2)})`;
+            }
+            const telefono = '593999058976'; // cambia si deseas
+            const url = `https://wa.me/${telefono}?text=${mensaje}`;
+
+            window.open(url, '_blank');
+
+        });
+        
+
+
+
+    </script>
+
+
+
+
+</body>
+</html>
