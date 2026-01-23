@@ -31,6 +31,129 @@ body {
 
 
 
+#pedido-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 260px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    z-index: 999;
+    font-family: 'Poppins', sans-serif;
+}
+
+#pedido-box h3 {
+    margin-top: 0;
+    font-size: 16px;
+}
+
+#pedido-lista {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+#pedido-lista li {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+#enviar-whatsapp {
+    width: 100%;
+    background: #25D366;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#enviar-whatsapp:hover {
+    background: #1ebe5d;
+}
+
+#pedido-lista li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 320px;
+    max-width: 90%;
+}
+
+.salsa-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.salsa-btn {
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.salsa-btn.active {
+    border-color: #e74c3c;
+    background: #ffeaea;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-actions button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#confirmar-salsa {
+    background: #25D366;
+    color: white;
+}
+
+#cancelar-salsa {
+    background: #ccc;
+}
+
+
 
 
 
@@ -80,6 +203,16 @@ a.logo:hover img {
     justify-content: space-between !important;
     height: 100% !important;
 }
+
+
+
+
+
+
+
+
+
+
 
 /* 5. Versión Celular */
 @media (max-width: 768px) {
@@ -448,6 +581,115 @@ ul {
 
 
 
+
+.otros-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* ensalada / extras */
+    gap: 24px;
+    align-items: start;
+}
+
+
+.extras-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.extra-btn {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.extra-btn span {
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.extra-btn:hover {
+    border-color: #ff9800;
+    background: #fff7ec;
+}
+
+.extra-btn.active {
+    background: #ff9800;
+    color: #fff;
+    border-color: #ff9800;
+}
+
+.extra-btn.active span {
+    color: #fff;
+}
+
+
+
+@media (max-width: 768px) {
+    .otros-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+.drinks-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+
+
+.drink-btn {
+    background: #fff;
+    border: 1.5px solid #ddd;
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+    text-align: left;
+}
+
+
+.drink-btn:hover {
+    border-color: #ff9800;
+    transform: translateY(-1px);
+}
+
+
+.drink-btn.active {
+    background: #ff9800;
+    color: #fff;
+    border-color: #ff9800;
+}
+
+
+.drink-btn span {
+    font-weight: 600;
+    font-size: 13px;
+    opacity: 0.9;
+}
+@media (max-width: 600px) {
+    .drinks-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 
 
 /* ... el resto del CSS (.hero-content p, .btn-primary) sigue igual abajo ... */
