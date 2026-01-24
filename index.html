@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Barbecue y Algo Más | Menú Digital</title>
+    
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -413,6 +416,21 @@
         </section>
     </main>
 
+
+    <section id="promociones" class="menu-section alternate-bg">
+        <h2 class="section-title">
+            🔥 PROMOCIONES DEL DÍA
+            <span id="promo-dia" style="font-size: 0.9em; font-weight: 400;"></span>
+        </h2>
+
+        <div class="menu-grid" id="promos-container">
+            <!-- Promociones dinámicas -->
+        </div>
+    </section>
+
+
+
+
     <footer id="contacto">
         <div class="container footer-content">
             <div class="footer-column">
@@ -601,9 +619,17 @@
             if (item.closest('#hotdog')) return 1;
             // Papas
             if (item.closest('#papas')) return 1;
+            // Promociones
+            if (item.closest('#promociones')) {
+                // Devuelve el número guardado o 0 si no existe
+                return parseInt(item.dataset.empaques) || 0;
+            }
 
             return 0;
         }
+
+
+
 
         const salsasDisponibles = [
             'BBQ',
@@ -888,6 +914,121 @@
         });
         
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* ==============================
+        PROMOCIONES DEL DIA
+        ================================ */
+
+        const dias = [
+            'domingo',
+            'lunes',
+            'martes',
+            'miercoles',
+            'jueves',
+            'viernes',
+            'sabado'
+        ];
+
+        const hoyIndex = new Date().getDay();
+        const hoy = dias[hoyIndex];
+
+        // Mostrar dia actual
+        document.getElementById('promo-dia').innerText =
+            `(Hoy: ${hoy.charAt(0).toUpperCase() + hoy.slice(1)})`;
+
+        const promociones = [
+            {
+                nombre: 'Promoción 1 Hamburguesa Mega',
+                descripcion: 'Hamburguesa Mega + 4 Alitas (1 salsa) + Papa + Gaseosa Mediana (500 ml)',
+                precio: 7.99,
+                dias: ['lunes','martes','miercoles','jueves','viernes','sabado','domingo'],
+                empaques: 2
+            },
+            {
+                nombre: 'Promoción 2 Hamburguesas',
+                descripcion: '2 Hamburguesas + 6 Alitas (1 salsa) + Papas + 2 Gaseosas personales (300ml)',
+                precio: 8.99,
+                dias: ['lunes','martes','miercoles','jueves'],
+                empaques: 1
+            },
+            {
+                nombre: 'Promoción 3 (24 Alitas)',
+                descripcion: '24 Alitas (3 salsas) + Papas + Ensalada + Pepsi 2L',
+                precio: 17.00,
+                dias: ['lunes','martes','miercoles','jueves'],
+                empaques: 4
+            },
+            {
+                nombre: 'Promoción 4 (30 Alitas)',
+                descripcion: '30 Alitas (3 salsas) + Papas + Ensalada + Pepsi 2L',
+                precio: 19.99,
+                dias: ['lunes','martes','miercoles','jueves','viernes','sabado','domingo'],
+                empaques: 4
+            },
+            {
+                nombre: 'Promoción 5 (18 Alitas)',
+                descripcion: '18 Alitas (2 salsas)',
+                precio: 13.99,
+                dias: ['lunes','martes','miercoles','jueves','viernes'],
+                empaques: 2
+            }
+        ];
+
+        const promoContainer = document.getElementById('promos-container');
+
+        promociones
+            .filter(p => p.dias.includes(hoy))
+            .forEach(promo => {
+                const div = document.createElement('div');
+                div.classList.add('menu-item', 'featured');
+                
+
+                //--- AGREGAR ESTA LÍNEA AQUÍ ---
+                div.dataset.empaques = promo.empaques; 
+                // -------------------------------
+
+                
+                div.innerHTML = `
+                    <h3>${promo.nombre}</h3>
+                    <p>${promo.descripcion}</p>
+                    <span class="price">$${promo.precio.toFixed(2)}</span>
+                `;
+
+                // Permitir agregar al pedido
+                div.addEventListener('click', () => {
+                    preguntarTipoPedido();
+                    const cantidadEmpaques = promo.empaques || 1;
+                    pedido.push({
+                        nombre: promo.nombre,
+                        precio: promo.precio,
+                        salsas: [],
+                        empaques: tipoPedido === 'llevar' ? cantidadEmpaques : 0
+                    });
+
+                    total += promo.precio;
+
+                    if (tipoPedido === 'llevar') {
+                        empaques += cantidadEmpaques;
+                        total += costoEmpaque;
+                    }
+
+                    actualizarPedido();
+                });
+
+                promoContainer.appendChild(div);
+            });
 
 
     </script>
