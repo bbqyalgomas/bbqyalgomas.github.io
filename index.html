@@ -483,10 +483,6 @@
     </div>
 
     <div id="salsa-modal" class="modal">
-
-
-
-
         <div class="modal-content">
             <h3>Selecciona tus salsas</h3>
             <div id="salsa-opciones" class="salsa-grid"></div>
@@ -497,7 +493,18 @@
             </div>
         </div>
     </div>
+    <div id="sabor-modal" class="modal">
+    <div class="modal-content">
+            <h3>Elige el sabor</h3>
+            <div id="sabor-opciones" class="salsa-grid">
+                </div>
 
+            <div class="modal-actions">
+                <button id="cancelar-sabor">Cancelar</button>
+                <button id="confirmar-sabor">Confirmar Sabor</button>
+            </div>
+        </div>
+    </div>
 
 
     <script>
@@ -643,20 +650,77 @@
 
         let productoPendiente = null;
 
+
+        function calcularLimiteSalsas(nombreProducto) {
+            const nombre = nombreProducto.toLowerCase();
+            // --- REGLAS PARA PROMOCIONES ---
+            if (nombre.includes('promoción')) {
+                
+                if (nombre.includes('promoción 1') || nombre.includes('promoción 2')) return 1;
+                // Promo 3 (24 alitas) y Promo 4 (30 alitas) -> 3 salsas
+                if (nombre.includes('promoción 3') || nombre.includes('promoción 4')) return 3;
+                
+                // Promo 5 (18 alitas) -> 2 salsas
+                if (nombre.includes('promoción 5')) return 2;
+                
+                // Promo 1 y Promo 2 (tienen pocas alitas) -> 1 salsa
+                return 1;
+            }
+
+            // Lógica para Costillas (basado en tu menú)
+            if (nombre.includes('costialitas') || nombre.includes('para dos')) return 2;
+            if (nombre.includes('costilla')) return 1;
+
+            // Lógica para Alitas: Extraer el número del nombre (ej: "Combo 12 alitas" -> 12)
+            const match = nombre.match(/(\d+)/); 
+            if (!match) return 1; // Si no encuentra número, devuelve 1 por defecto
+
+            const cantidad = parseInt(match[0]);
+
+            if (cantidad >= 40) return 4;
+            if (cantidad >= 24) return 3; // Cubre 24 y 30
+            if (cantidad >= 12) return 2; // Cubre 12 y 18
+            
+            // Para 3, 6, 8 y cualquier otro menor
+            return 1;
+        }
         // Crear botones de salsas
         const salsaOpciones = document.getElementById('salsa-opciones');
+        const tituloModal = document.querySelector('#salsa-modal h3'); // Referencia al título del modal
+
         salsasDisponibles.forEach(salsa => {
             const btn = document.createElement('button');
             btn.textContent = salsa;
             btn.classList.add('salsa-btn');
 
             btn.addEventListener('click', () => {
-                btn.classList.toggle('active');
+                // 1. Obtener límite permitido para el producto actual
+                const limite = calcularLimiteSalsas(productoPendiente.nombre);
+                
+                // 2. Contar cuántas hay seleccionadas ACTUALMENTE
+                const seleccionadas = document.querySelectorAll('.salsa-btn.active').length;
+
+                // 3. Lógica de bloqueo
+                if (btn.classList.contains('active')) {
+                    // Si ya estaba activa, permitir desmarcar siempre
+                    btn.classList.remove('active');
+                } else {
+                    // Si intenta marcar una nueva, verificar el límite
+                    if (seleccionadas < limite) {
+                        btn.classList.add('active');
+                    } else {
+                        // BLOQUEAR Y AVISAR
+                        alert(`Para "${productoPendiente.nombre}" solo puedes elegir ${limite} salsa(s).`);
+                        
+                        // Opcional: Efecto visual de error
+                        btn.style.transform = "translateX(5px)";
+                        setTimeout(() => btn.style.transform = "none", 100);
+                    }
+                }
             });
 
             salsaOpciones.appendChild(btn);
         });
-
         
 
         // Click en productos
@@ -703,40 +767,70 @@
         });
 
         // Click en BEBIDAS
+        // ==========================================
+        // LÓGICA DE BEBIDAS Y SABORES
+        // ==========================================
+
+        const saboresJugos = [
+            'Mora', 
+            'Maracuyá', 
+            'Limón', 
+            'Piña', 
+            'Frutilla', 
+            'Guanábana', 
+            'Coco'
+        ];
+
+        // 1. Generar botones dentro del modal de sabor (al cargar la página)
+        const saborOpcionesDiv = document.getElementById('sabor-opciones');
+        saboresJugos.forEach(sabor => {
+            const btn = document.createElement('button');
+            btn.textContent = sabor;
+            btn.classList.add('salsa-btn', 'sabor-btn'); // Usamos estilos de salsa-btn para ahorrar CSS
+
+            // Lógica de selección única (tipo radio button)
+            btn.addEventListener('click', () => {
+                // Desmarcar todos los otros sabores
+                document.querySelectorAll('.sabor-btn').forEach(b => b.classList.remove('active'));
+                // Marcar este
+                btn.classList.add('active');
+            });
+
+            saborOpcionesDiv.appendChild(btn);
+        });
+
+        // 2. Click en botones de Bebidas (Menú Principal)
         document.querySelectorAll('.drink-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-
                 preguntarTipoPedido();
 
                 const nombreBase = btn.dataset.nombre;
                 const precio = parseFloat(btn.dataset.precio);
                 const requiereSabor = btn.dataset.sabor === 'true';
 
-                let sabor = null;
-
+                // Si requiere sabor, guardamos datos y ABRIMOS MODAL
                 if (requiereSabor) {
-                    sabor = prompt(
-                        'Elige el sabor:\nMora, Maracuyá, Limón, Piña, Frutilla, Guanábana, Coco'
-                    );
-
-                    if (!sabor) return; // canceló
-                    sabor = sabor.trim();
+                    productoPendiente = {
+                        nombre: nombreBase,
+                        precio: precio,
+                        esBebida: true,
+                        empaques: 0 // Asumimos 0 empaque extra en bebida, o ajusta si es necesario
+                    };
+                    abrirModalSabor();
+                    return; // Detenemos aquí, el modal se encarga del resto
                 }
 
-                const nombreFinal = sabor
-                    ? `${nombreBase} (${sabor})`
-                    : nombreBase;
-
+                // --- Lógica para bebidas SIN sabor (Agua, Colas, Cervezas) ---
+                // (Mantenemos tu lógica original de toggle para cosas simples)
                 btn.classList.toggle('active');
-
-                const index = pedido.findIndex(
-                    p => p.nombre === nombreFinal && p.esBebida
-                );
+                
+                const index = pedido.findIndex(p => p.nombre === nombreBase && p.esBebida);
 
                 if (index === -1) {
+                    // Agregar
                     pedido.push({
-                        nombre: nombreFinal,
+                        nombre: nombreBase,
                         precio: precio,
                         salsas: [],
                         empaques: 0,
@@ -744,14 +838,54 @@
                     });
                     total += precio;
                 } else {
+                    // Quitar
                     total -= pedido[index].precio;
                     pedido.splice(index, 1);
                 }
-
                 actualizarPedido();
             });
         });
 
+        // 3. Funciones del Modal de Sabor
+        function abrirModalSabor() {
+            const modal = document.getElementById('sabor-modal');
+            modal.style.display = 'flex';
+            // Limpiar selección previa
+            document.querySelectorAll('.sabor-btn').forEach(b => b.classList.remove('active'));
+        }
+
+        document.getElementById('cancelar-sabor').addEventListener('click', () => {
+            document.getElementById('sabor-modal').style.display = 'none';
+            productoPendiente = null;
+        });
+
+        document.getElementById('confirmar-sabor').addEventListener('click', () => {
+            const saborSeleccionadoBtn = document.querySelector('.sabor-btn.active');
+            
+            if (!saborSeleccionadoBtn) {
+                alert('Por favor, selecciona un sabor.');
+                return;
+            }
+
+            const sabor = saborSeleccionadoBtn.textContent;
+            const nombreFinal = `${productoPendiente.nombre} (${sabor})`;
+
+            // Agregamos al pedido
+            pedido.push({
+                nombre: nombreFinal,
+                precio: productoPendiente.precio,
+                salsas: [],
+                empaques: 0,
+                esBebida: true
+            });
+
+            total += productoPendiente.precio;
+            actualizarPedido();
+            
+            // Cerrar modal
+            document.getElementById('sabor-modal').style.display = 'none';
+            productoPendiente = null;
+        });
 
         // Click en EXTRAS
         document.querySelectorAll('.extra-btn').forEach(btn => {
@@ -794,8 +928,17 @@
 
         // Modal
         function abrirModalSalsa() {
-            document.getElementById('salsa-modal').style.display = 'flex';
+            const modal = document.getElementById('salsa-modal');
+            modal.style.display = 'flex';
+            
+            // Limpiar selecciones anteriores
             document.querySelectorAll('.salsa-btn').forEach(b => b.classList.remove('active'));
+
+            // --- NUEVO: Mostrar al cliente cuántas puede elegir ---
+            const limite = calcularLimiteSalsas(productoPendiente.nombre);
+            const titulo = modal.querySelector('h3');
+            titulo.innerText = `Selecciona tus salsas (Máximo: ${limite})`;
+            // -----------------------------------------------------
         }
 
         document.getElementById('cancelar-salsa').addEventListener('click', () => {
@@ -1009,22 +1152,20 @@
                 // Permitir agregar al pedido
                 div.addEventListener('click', () => {
                     preguntarTipoPedido();
+                    
+                    // Calculamos los empaques que tendría este producto
                     const cantidadEmpaques = promo.empaques || 1;
-                    pedido.push({
+                    const empaquesAUsar = (tipoPedido === 'llevar') ? cantidadEmpaques : 0;
+
+                    // Preparamos el producto pendiente (IGUAL que con las alitas normales)
+                    productoPendiente = {
                         nombre: promo.nombre,
                         precio: promo.precio,
-                        salsas: [],
-                        empaques: tipoPedido === 'llevar' ? cantidadEmpaques : 0
-                    });
+                        empaques: empaquesAUsar
+                    };
 
-                    total += promo.precio;
-
-                    if (tipoPedido === 'llevar') {
-                        empaques += cantidadEmpaques;
-                        total += costoEmpaque;
-                    }
-
-                    actualizarPedido();
+                    // Abrimos el modal para que elija salsas
+                    abrirModalSalsa();
                 });
 
                 promoContainer.appendChild(div);
